@@ -156,6 +156,7 @@
 
 #define MODE_CMD	41
 #define RESET_ID	2
+#define POWER_OFF_ID    6
 
 #define PKT_DROP	0
 #define PKT_ALLOC	1
