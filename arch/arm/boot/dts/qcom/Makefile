@@ -1,5 +1,6 @@
 # MSM8939
 dtb-$(CONFIG_MACH_SONY_TULIP) += msm8939-kanuti-tulip.dtb
+dtb-$(CONFIG_TEST_ONLY) += test01a-msm8939-qrd-skuk.dtb
 
 dtb-$(CONFIG_ARCH_MSM8996) += msm8996-v2-pmi8994-mtp.dtb \
 	msm8996-v2-pmi8994-pmk8001-mtp.dtb \
@@ -291,10 +292,12 @@ dtb-$(CONFIG_ARCH_MDM9607) += mdm9607-rumi.dtb \
 	mdm9206-rcm.dtb
 
 ifneq ($(CONFIG_ARCH_SONY_KANUTI), y)
+ifneq ($(CONFIG_TEST_ONLY), y)
 dtb-$(CONFIG_ARCH_MSM8916) += msm8952-qrd-skum.dtb \
        msm8952-cdp.dtb \
        msm8952-ext-codec-cdp.dtb \
        msm8952-mtp.dtb
+endif
 endif
 
 dtb-$(CONFIG_ARCH_MSM8909) += msm8909-pm8916-mtp.dtb \

@@ -741,11 +741,31 @@ config INPUT_SIRFSOC_ONKEY
 	bool "CSR SiRFSoC power on/off/suspend key support"
 	depends on ARCH_SIRF && OF
 	default y
-	help
-	  Say Y here if you want to support for the SiRFSoC power on/off/suspend key
-	  in Linux, after you press the onkey, system will suspend.
+        help
+          Say Y here if you want to support for the SiRFSoC power on/off/suspend key
+          in Linux, after you press the onkey, system will suspend.
 
-	  If unsure, say N.
+          If unsure, say N.
+
+config SENSORS_LTR553_TEST
+	tristate "LTR553 light and proximity device driver"
+	depends on I2C
+	help
+	  Say Y here if you want to enable the LTR553 light and
+	  proximity sensor driver.
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called ltr553 for test.
+
+config SENSORS_LTR553_TEST_PLUS
+	tristate "LTR553 light and proximity device driver"
+	depends on I2C
+	help
+	  Say Y here if you want to enable the LTR553 light and
+	  proximity sensor driver.
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called ltr553 for test_plus.
 
 config INPUT_IDEAPAD_SLIDEBAR
 	tristate "IdeaPad Laptop Slidebar"
@@ -766,6 +786,22 @@ config INPUT_SOC_BUTTON_ARRAY
 
 	  To compile this driver as a module, choose M here: the
 	  module will be called soc_button_array.
+
+config SENSORS_ST480_TEST_PLUS
+	tristate "Senodia ST480 magnetic sensor support"
+	depends on I2C=y
+    default n
+    help
+		If you say yes here you get support for Senodia
+		magnetic sensors ST480 for test_plus.
+
+config SENSORS_ST480_TEST
+        tristate "Senodia ST480 magnetic sensor support"
+        depends on I2C=y
+    default n
+    help
+                If you say yes here you get support for Senodia
+                magnetic sensors ST480 for test.
 
 config INPUT_DRV260X_HAPTICS
 	tristate "TI DRV260X haptics support"
