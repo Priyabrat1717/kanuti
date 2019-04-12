@@ -195,33 +195,59 @@
 	};
 };
 
-
-&tlmm_pinmux {
+&msm_gpio {
 	bma2x2_int1_pin {
-		qcom,pins = <&gp 112>;
-		qcom,num-grp-pins = <1>;
-		label = "bma2x2_int1_pin";
 		bma2x2_int1_default: int1_default {
-			  drive-strength = <6>;
-			  bias-pull-up;
+			mux {
+				pins = "gpio112";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio112";
+				drive-strength = <6>;
+				bias-disable; /* NO pull */
+			};
 		};
+
 		bma2x2_int1_sleep: int1_sleep {
-			  drive-strength = <2>;
-			  bias-pull-down;
+			mux {
+				pins = "gpio112";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio112";
+				drive-strength = <2>;
+				bias-disable; /* NO pull */
+			};
 		};
 	};
 
 	bma2x2_int2_pin {
-		qcom,pins = <&gp 114>;
-		qcom,num-grp-pins = <1>;
-		label = "bma2x2_int2_pin";
 		bma2x2_int2_default: int2_default {
-			  drive-strength = <6>;
-			  bias-pull-up;
+			mux {
+				pins = "gpio114";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio114";
+				drive-strength = <6>;
+				bias-disable; /* NO pull */
+			};
 		};
+
 		bma2x2_int2_sleep: int2_sleep {
-			  drive-strength = <2>;
-			  bias-pull-down;
+			mux {
+				pins = "gpio114";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio114";
+				drive-strength = <2>;
+			};
 		};
 	};
 };
@@ -314,9 +340,14 @@
 };
 
 //Jelly Remove  <&gp 1>, <&gp 36>, <&gp 76>;
-&pmx_mdss {
-	qcom,num-grp-pins = <1>;
-	qcom,pins = <&gp 25>;
+&msm_gpio {
+	pmx_mdss {
+		mdss_dsi_active: mdss_dsi_active {
+			mux {
+				pins = "gpio25";
+			};
+		};
+	};
 };
 
 &mdss_dsi0 {

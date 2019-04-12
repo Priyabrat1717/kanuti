@@ -21,16 +21,21 @@
 	qcom,board-id = <0x1000b 12>, <0x2000b 12>;
 };
 
-&tlmm_pinmux {
+&msm_gpio {
 	tps65132-en-pin {
-		qcom,pins = <&gp 97>, <&gp 98>;
-		qcom,num-grp-pins = <2>;
-		label = "tps65132_en_pins";
-		qcom,pin-func = <0>;
+		tps65132_en_default: tps65132_en_default {
+			mux
+			{
+				pins = "gpio97", "gpio98";
+				function = "gpio";
+			};
 
-		tps65132_en_default: en-default {
-			drive-strength = <2>;
-			bias-pull-down;
+			config
+			{
+				pins = "gpio97", "gpio98";
+				drive-strength = <2>;
+				bias-pull-down;
+			};
 		};
 	};
 };
