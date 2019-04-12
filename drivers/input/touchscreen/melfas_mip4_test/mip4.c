@@ -946,7 +946,7 @@ static ssize_t mip_sys_fw_update(struct device *dev, struct device_attribute *at
 	result = snprintf(buf, PAGE_SIZE, "%s\n", info->print_buf);
 	return result;
 }
-static DEVICE_ATTR(fw_update, 0666, mip_sys_fw_update, NULL);
+static DEVICE_ATTR(fw_update, 0660, mip_sys_fw_update, NULL);
 
 /**
 * Sysfs attr info

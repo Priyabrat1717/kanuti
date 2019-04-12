@@ -1208,23 +1208,23 @@ static ssize_t mip_sys_wakeup_gesture(struct device *dev, struct device_attribut
 /**
 * Sysfs functions
 */
-static DEVICE_ATTR(fw_update_section, 0666, mip_sys_fw_update_section, NULL);
-static DEVICE_ATTR(fw_version, 0666, mip_sys_fw_version, NULL);
-static DEVICE_ATTR(fw_path, 0666, mip_sys_fw_path_show, mip_sys_fw_path_store);
-static DEVICE_ATTR(info, 0666, mip_sys_info, NULL);
-static DEVICE_ATTR(power_on, 0666, mip_sys_power_on, NULL);
-static DEVICE_ATTR(power_off, 0666, mip_sys_power_off, NULL);
-static DEVICE_ATTR(reboot, 0666, mip_sys_reboot, NULL);
-static DEVICE_ATTR(mode_glove, 0666, mip_sys_mode_show, mip_sys_mode_store);
-static DEVICE_ATTR(mode_charger, 0666, mip_sys_mode_show, mip_sys_mode_store);
-static DEVICE_ATTR(mode_cover_window, 0666, mip_sys_mode_show, mip_sys_mode_store);
-static DEVICE_ATTR(mode_palm_rejection, 0666, mip_sys_mode_show, mip_sys_mode_store);
-static DEVICE_ATTR(image_intensity, 0666, mip_sys_image, NULL);
-static DEVICE_ATTR(image_rawdata, 0666, mip_sys_image, NULL);
+static DEVICE_ATTR(fw_update_section, 0660, mip_sys_fw_update_section, NULL);
+static DEVICE_ATTR(fw_version, 0660, mip_sys_fw_version, NULL);
+static DEVICE_ATTR(fw_path, 0660, mip_sys_fw_path_show, mip_sys_fw_path_store);
+static DEVICE_ATTR(info, 0660, mip_sys_info, NULL);
+static DEVICE_ATTR(power_on, 0660, mip_sys_power_on, NULL);
+static DEVICE_ATTR(power_off, 0660, mip_sys_power_off, NULL);
+static DEVICE_ATTR(reboot, 0660, mip_sys_reboot, NULL);
+static DEVICE_ATTR(mode_glove, 0660, mip_sys_mode_show, mip_sys_mode_store);
+static DEVICE_ATTR(mode_charger, 0660, mip_sys_mode_show, mip_sys_mode_store);
+static DEVICE_ATTR(mode_cover_window, 0660, mip_sys_mode_show, mip_sys_mode_store);
+static DEVICE_ATTR(mode_palm_rejection, 0660, mip_sys_mode_show, mip_sys_mode_store);
+static DEVICE_ATTR(image_intensity, 0660, mip_sys_image, NULL);
+static DEVICE_ATTR(image_rawdata, 0660, mip_sys_image, NULL);
 static DEVICE_ATTR(test_cm_delta, 0600, mip_sys_test, NULL);
-static DEVICE_ATTR(test_cm_jitter, 0666, mip_sys_test, NULL);
+static DEVICE_ATTR(test_cm_jitter, 0660, mip_sys_test, NULL);
 static DEVICE_ATTR(test_short, 0600, mip_sys_test, NULL);
-static DEVICE_ATTR(wakeup_gesture, 0666, mip_sys_wakeup_gesture, NULL);
+static DEVICE_ATTR(wakeup_gesture, 0660, mip_sys_wakeup_gesture, NULL);
 
 /**
 * Sysfs attr list info
