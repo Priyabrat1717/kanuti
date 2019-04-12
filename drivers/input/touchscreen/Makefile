@@ -92,4 +92,3 @@ obj-$(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_FW_UPDATE) 	+= synaptics_fw_update.o
 obj-$(CONFIG_TOUCHSCREEN_GT9XX)		+= gt9xx/
 obj-$(CONFIG_TESTPLUS_ONLY)            += melfas_mip4_testplus/
 obj-$(CONFIG_TEST_ONLY)                += melfas_mip4_test/
->>>>>>> 51ae286... mobee01a: Added LS-5015(mobee01a_msm8916_64) Changes
