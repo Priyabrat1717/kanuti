@@ -59,6 +59,8 @@
 #define WAIT_FOR_CBC_IND     2
 #define WCNSS_DUAL_BAND_CAPABILITY_OFFSET	(1 << 8)
 
+const char *chip_name = NULL;
+
 /* module params */
 #define WCNSS_CONFIG_UNSPECIFIED (-1)
 #define UINT32_MAX (0xFFFFFFFFU)
@@ -513,6 +515,17 @@ static ssize_t wcnss_version_show(struct device *dev,
 
 static DEVICE_ATTR(wcnss_version, S_IRUSR,
 		wcnss_version_show, NULL);
+
+static ssize_t wcnss_name_show(struct device *dev,
+				struct device_attribute *attr, char *buf)
+{
+	if (!penv)
+		return -ENODEV;
+	return scnprintf(buf, PAGE_SIZE, "%s", chip_name);
+}
+
+static DEVICE_ATTR(wcnss_name, S_IRUSR,
+		wcnss_name_show, NULL);
 
 /* wcnss_reset_fiq() is invoked when host drivers fails to
  * communicate with WCNSS over SMD; so logging these registers
@@ -1172,6 +1185,10 @@ static int wcnss_create_sysfs(struct device *dev)
 		return ret;
 
 	ret = device_create_file(dev, &dev_attr_wcnss_version);
+	if (ret)
+		goto remove_thermal;
+
+	ret = device_create_file(dev, &dev_attr_wcnss_name);
 	if (ret)
 		goto remove_thermal;
 
@@ -3225,6 +3242,15 @@ wcnss_trigger_config(struct platform_device *pdev)
 	}
 	/* Remove pm_qos request */
 	wcnss_disable_pc_remove_req();
+
+   chip_name = kmalloc(PAGE_SIZE, GFP_KERNEL);
+   if (!chip_name)
+     printk("[%s]:Failed to alloc chip_name.\n", __func__);
+     rc = of_property_read_string(pdev->dev.of_node, "qcom,chip_name",&chip_name);
+   if (rc) {
+     printk("Error reading qcom,chip_name rc=%d\n", rc);
+     chip_name = NULL;
+   }
 
 	return 0;
 
