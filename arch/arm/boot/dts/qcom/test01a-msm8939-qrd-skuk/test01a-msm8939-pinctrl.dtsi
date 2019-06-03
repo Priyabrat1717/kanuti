@@ -207,7 +207,7 @@
 
 			sdc2_cd_off: cd_off {
 				mux {
-					pins = "gpio1078";
+					pins = "gpio108";
 					function = "gpio";
 				};
 
