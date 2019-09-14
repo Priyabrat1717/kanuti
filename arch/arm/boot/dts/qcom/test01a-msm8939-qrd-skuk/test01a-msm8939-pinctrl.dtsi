@@ -441,107 +441,132 @@
 			};
 		};
 
-#if 0
-		 spi0_active {
-                        /* MOSI, MISO, CLK */
-                        qcom,pins = <&gp 8>, <&gp 9>, <&gp 11>;
-                        qcom,num-grp-pins = <3>;
-                        qcom,pin-func = <1>;
-                        label = "spi0-active";
-                        /* active state */
-                        spi0_default: spi0_default {
-                             wcnss_pmux_5wire   drive-strength = <12>; /* 12 MA */
-                                bias-disable = <0>; /* No PULL */
-                        };
-                };
+		/* SPI 0 */
+		spi0 {
 
-                spi0_suspend {
-                        /* MOSI, MISO, CLK */
-                        qcom,pins = <&gp 8>, <&gp 9>, <&gp 11>;
-                        qcom,num-grp-pins = <3>;
-                        qcom,pin-func = <0>;
-                        label = "spi0-suspend";
-                        /* suspended state */
-                        spi0_sleep: spi0_sleep {
-                                drive-strength = <2>; /* 2 MA */
-			        bias-pull-down; /* PULL Down */
-                        };
-                };
+			spi0_default: spi0_default {
+				/* active state */
+				mux {
+					/* MOSI, MISO, CLK */
+					pins = "gpio8", "gpio9", "gpio11";
+					function = "blsp_spi1";
+				};
 
-                spi0_cs0_active {
-                        /* CS */
-                        qcom,pins = <&gp 10>;
-                        qcom,num-grp-pins = <1>;
-                        qcom,pin-func = <1>;
-                        label = "spi0-cs0-active";
-                        spi0_cs0_active: cs0_active {
-                                drive-strength = <2>;
-                                bias-disable = <0>;
-                        };
-                };
+				config {
+					pins = "gpio8", "gpio9", "gpio11";
+					drive-strength = <12>; /* 12 MA */
+					bias-disable = <0>; /* No PULL */
+				};
+			};
 
-                spi0_cs0_suspend {
-                        /* CS */
-                        qcom,pins = <&gp 10>;
-                        qcom,num-grp-pins = <1>;
-                        qcom,pin-func = <0>;
-                        label = "spi0-cs0-suspend";
-                        spi0_cs0_sleep: cs0_sleep {
-                                drive-strength = <2>;
-                                bias-disable = <0>;
-                        };
-                };
 
-		spi5_active {
-                        /* MOSI, MISO, CLK */
-                        qcom,pins = <&gp 16>, <&gp 17>, <&gp 19>;
-                        qcom,num-grp-pins = <3>;
-                        qcom,pin-func = <1>;
-                        label = "spi5-active";
-                        /* active state */
-                        spi5_default: spi5_default {
-                                drive-strength = <16>; /* 16 MA */
-                                bias-disable = <0>; /* No PULL */
-                        };
-                };
+			spi0_sleep: spi0_sleep {
+				/* suspended state */
+				mux {
+					/* MOSI, MISO, CLK */
+					pins = "gpio8", "gpio9", "gpio11";
+					function = "gpio";
+				};
 
-                spi5_suspend {
-                        /* MOSI, MISO, CLK */
-                        qcom,pins = <&gp 16>, <&gp 17>, <&gp 19>;
-                        qcom,num-grp-pins = <3>;
-                        qcom,pin-func = <0>;
-                        label = "spi5-suspend";
-                        /* suspended state */
-                        spi5_sleep: spi5_sleep {
-                                drive-strength = <2>; /* 2 MA */
-                                bias-disable = <0>; /* No PULL */
-                        };
-                };
+				config {
+					pins = "gpio8", "gpio9", "gpio11";
+					drive-strength = <2>; /* 2 MA */
+					bias-pull-down; /* PULL Down */
+				};
+			};
 
-                spi5_cs0_active {
-                        /* CS */
-                        qcom,pins = <&gp 18>;
-                        qcom,num-grp-pins = <1>;
-                        qcom,pin-func = <1>;
-                        label = "spi5-cs0-active";
-                        spi5_cs0_active: cs0_active {
-                                drive-strength = <2>;
-                                bias-disable = <0>;
-                        };
-                };
+			spi0_cs0_active: cs0_active {
+				/* CS */
+				mux {
+					pins = "gpio10";
+					function = "blsp_spi1_cs1";
+				};
 
-                spi5_cs0_suspend {
-                        /* CS */
-                        qcom,pins = <&gp 18>;
-                        qcom,num-grp-pins = <1>;
-                        qcom,pin-func = <0>;
-                        label = "spi5-cs0-suspend";
-                        spi5_cs0_sleep: cs0_sleep {
-                                drive-strength = <2>;
-                                bias-disable = <0>;
-                        };
-                };
-#endif
+				config {
+					pins = "gpio10";
+					drive-strength = <2>;
+					bias-disable = <0>;
+				};
+			};
+
+			spi0_cs0_sleep: cs0_sleep {
+				/* CS */
+				mux {
+					pins = "gpio10";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio10";
+					drive-strength = <2>;
+					bias-disable = <0>;
+				};
+			};
+		};
+
+
+		/* SPI 5 */
+		spi5 {
+
+			spi5_default: spi5_default {
+				/* active state */
+				mux {
+					/* MOSI, MISO, CLK */
+					pins = "gpio16", "gpio17", "gpio19";
+					function = "blsp_spi6";
+				};
+
+				config {
+					pins = "gpio16", "gpio17", "gpio19";
+					drive-strength = <12>; /* 12 MA */
+					bias-disable = <0>; /* No PULL */
+				};
+			};
+
+
+			spi5_sleep: spi5_sleep {
+				/* suspended state */
+				mux {
+					/* MOSI, MISO, CLK */
+					pins = "gpio16", "gpio17", "gpio19";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio16", "gpio17", "gpio19";
+					drive-strength = <2>; /* 2 MA */
+					bias-pull-down; /* PULL Down */
+				};
+			};
+
+			spi5_cs0_active: cs0_active {
+				/* CS */
+				mux {
+					pins = "gpio18";
+					function = "blsp_spi6_cs1";
+				};
+
+				config {
+					pins = "gpio18";
+					drive-strength = <2>;
+					bias-disable = <0>;
+				};
+			};
+
+			spi5_cs0_sleep: cs0_sleep {
+				/* CS */
+				mux {
+					pins = "gpio18";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio18";
+					drive-strength = <2>;
+					bias-disable = <0>;
+				};
+			};
+		};
 
 		wcnss_pmux_5wire {
 			wcnss_default: wcnss_default {
