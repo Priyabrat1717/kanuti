@@ -10,9 +10,31 @@
  * GNU General Public License for more details.
  */
 
+#include "./../msm8939.dtsi"
 #include "test01a-msm8939-qrd.dtsi"
 #include "test01a-msm8939-camera-sensor-qrd.dtsi"
 #include "dsi-panel-ams497-720p-video.dtsi"
+#include "./../lineage-msm8939-common.dtsi"
+
+
+/ {
+	firmware: firmware {
+		android {
+			compatible = "android,firmware";
+			fstab {
+				compatible = "android,fstab";
+				system {
+					compatible = "android,system";
+					dev = "/dev/block/platform/soc/7824900.sdhci/by-name/system";
+					type = "ext4";
+					mnt_flags = "ro,barrier=1,discard";
+					fsmgr_flags = "wait";
+					status = "ok";
+				};
+			};
+		};
+	};
+};
 
 &soc {
         i2c@78b6000 { /* BLSP1 QUP2 */
@@ -344,6 +366,18 @@
 	pmx_mdss {
 		mdss_dsi_active: mdss_dsi_active {
 			mux {
+				pins = "gpio25";
+			};
+			config {
+				pins = "gpio25";
+			};
+		};
+
+		mdss_dsi_suspend: mdss_dsi_suspend {
+			mux {
+				pins = "gpio25";
+                        };
+			config {
 				pins = "gpio25";
 			};
 		};

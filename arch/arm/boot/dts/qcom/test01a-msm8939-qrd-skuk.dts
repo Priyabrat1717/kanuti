@@ -12,7 +12,6 @@
 
 /dts-v1/;
 
-#include "./test01a-msm8939-qrd-skuk/test01a-msm8939.dtsi"
 #include "./test01a-msm8939-qrd-skuk/test01a-msm8939-qrd-skuk.dtsi"
 
 / {
