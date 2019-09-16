@@ -930,7 +930,7 @@ static int smb1360_disable_fg_access(struct smb1360_chip *chip)
 	rc = smb1360_masked_write(chip, CMD_I2C_REG, FG_ACCESS_ENABLED_BIT, 0);
 	if (rc)
 		pr_err("Couldn't disable FG access rc=%d\n", rc);
-    INIT_COMPLETION(chip->fg_mem_access_granted);
+    init_completion(&chip->fg_mem_access_granted);
 	return rc;
 }
 

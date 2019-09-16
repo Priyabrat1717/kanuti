@@ -449,7 +449,7 @@
 				mux {
 					/* MOSI, MISO, CLK */
 					pins = "gpio8", "gpio9", "gpio11";
-					function = "blsp_spi1";
+					function = "blsp_spi3";
 				};
 
 				config {
