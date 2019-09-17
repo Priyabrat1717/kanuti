@@ -153,6 +153,7 @@
 		qcom,mdss-fb-map-prim = <&mdss_fb0>;
 		gdsc-supply = <&gdsc_mdss>;
 		vdda-supply = <&pm8916_l2>;
+		vdd-supply = <&pm8916_l17>;
 		vddio-supply = <&pm8916_l6>;
 
 		/* Bus Scale Settings */
@@ -223,6 +224,28 @@
 			};
 		};
 
+		qcom,panel-supply-entries {
+                        #address-cells = <1>;
+                        #size-cells = <0>;
+
+                        qcom,panel-supply-entry@0 {
+                                reg = <0>;
+                                qcom,supply-name = "vdd";
+                                qcom,supply-min-voltage = <2850000>;
+                                qcom,supply-max-voltage = <2850000>;
+                                qcom,supply-enable-load = <100000>;
+                                qcom,supply-disable-load = <100>;
+                        };
+                        qcom,panel-supply-entry@1 {
+                                reg = <1>;
+                                qcom,supply-name = "vddio";
+                                qcom,supply-min-voltage = <1800000>;
+                                qcom,supply-max-voltage = <1800000>;
+                                qcom,supply-enable-load = <100000>;
+                                qcom,supply-disable-load = <100>;
+                        };
+                };
+
 		mdss_dsi0: qcom,mdss_dsi_ctrl0@1a98000 {
 			compatible = "qcom,mdss-dsi-ctrl";
 			label = "MDSS DSI CTRL->0";
@@ -236,6 +259,8 @@
 
 			qcom,timing-db-mode;
 			qcom,mdss-mdp = <&mdss_mdp>;
+			gdsc-supply = <&gdsc_mdss>;
+			vdda-supply = <&pm8916_l2>;
 			vdd-supply = <&pm8916_l17>;
 			vddio-supply = <&pm8916_l6>;
 
